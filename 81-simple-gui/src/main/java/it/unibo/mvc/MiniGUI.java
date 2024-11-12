@@ -36,22 +36,24 @@ public class MiniGUI {
         canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+        final JPanel newPanel = new JPanel();
+        newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
+        canvas.add(newPanel, BorderLayout.CENTER);
+        newPanel.add(write);
+        final JTextField result = new JTextField();
+        canvas.add(result, BorderLayout.NORTH);
         /*
          * Handlers
          */
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.println(randomGenerator.nextInt());
+                final String randNumber = String.valueOf(randomGenerator.nextInt());
+                System.out.println(randNumber);
+                result.setText(randNumber);
             }
         });
-
-        final JPanel newPanel = new JPanel();
-        newPanel.setLayout(new BoxLayout(newPanel, BoxLayout.X_AXIS));
-        canvas.add(newPanel, BorderLayout.CENTER);
-        newPanel.add(write);
-        final JTextField Result = new JTextField();
-        canvas.add(Result, BorderLayout.NORTH);
 
     }
 
